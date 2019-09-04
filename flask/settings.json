@@ -1,0 +1,14 @@
+{
+    "database": {
+        "host": "db",
+        "port": "5432",
+        "name": "postgres",
+        "user": "postgres",
+        "password": "password"
+    },
+    
+    "secret_key": "k%k^K4#DaJQH",
+    "host": "0.0.0.0",
+    "port": 8000,
+    "data_path": "data"
+}

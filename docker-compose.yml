@@ -1,0 +1,41 @@
+version: "3.7"
+
+networks:
+  net:
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+
+    networks:
+      - net
+
+  flask:
+    build: ./flask
+    container_name: flask
+    restart: always
+    environment:
+      - APP_NAME=MyFlaskApp
+    depends_on:
+      - db
+    command: bash -c "sleep 5 && uwsgi app.ini"
+    expose:
+      - 8000
+    networks:
+      - net
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "0.0.0.0:80:8080"
+    networks:
+      - net
