@@ -1,3 +1,7 @@
+* Установка докера:
+
+    `$ ./install_docker.sh`
+
 * Запуск сервера:
 
-    `$ docker-compose up --build`
+    `$ ./run.sh`
