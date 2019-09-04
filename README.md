@@ -1,7 +1,7 @@
 * Установка докера:
 
-    `$ ./install_docker.sh`
+    `$ sudo sh ./install_docker.sh`
 
 * Запуск сервера:
 
-    `$ ./run.sh`
+    `$ sudo sh ./run.sh`
