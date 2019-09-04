@@ -1,7 +1,3 @@
-import atexit
-import json
-import sys
-
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask
 from sqlalchemy import create_engine
@@ -9,6 +5,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
 from server.settingsObject import Settings
+
+import atexit
+import json
+import sys
+import logging
 
 
 def read_config(config_file):
@@ -61,7 +62,7 @@ def clean_holds():
             values(balance=User.balance - User.holds, holds=0)
         conn.execute(stmt)
     except SQLAlchemyError:
-        pass
+        logging.error("Cleaning holds error")
     finally:
         session.close()
 
